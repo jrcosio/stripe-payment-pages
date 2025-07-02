@@ -53,23 +53,6 @@
             margin-bottom: 30px;
         }
         
-        .close-button {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-        }
-        
-        .close-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
-        }
-        
         .info {
             background: #e8f5e8;
             padding: 20px;
@@ -86,6 +69,20 @@
             margin: 10px 0;
             color: #6c757d;
             font-size: 0.9em;
+        }
+        
+        .close-instruction {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
         
         .footer {
@@ -114,9 +111,9 @@
             </div>
         </div>
         
-        <button class="close-button" onclick="cerrarPestana()">
-            🗂️ Cerrar Pestaña
-        </button>
+        <div class="close-instruction">
+            CERRAR PESTAÑA DEL NAVEGADOR
+        </div>
         
         <div class="footer">
             <strong>Trail Peñasagra</strong><br>
@@ -146,36 +143,9 @@
             }
         }
         
-        // Intentar cerrar pestaña
-        function cerrarPestana() {
-            try {
-                window.close();
-            } catch (e) {
-                alert('Por favor, cierra esta pestaña manualmente');
-            }
-        }
-        
-        // Auto-cerrar después de 10 segundos (opcional)
-        function autoCerrar() {
-            let contador = 10;
-            const button = document.querySelector('.close-button');
-            
-            const interval = setInterval(() => {
-                button.innerHTML = `🗂️ Cerrando en ${contador}s`;
-                contador--;
-                
-                if (contador < 0) {
-                    clearInterval(interval);
-                    cerrarPestana();
-                }
-            }, 1000);
-        }
-        
         // Inicializar
         window.onload = function() {
             mostrarSessionInfo();
-            // Descomentar para auto-cerrar:
-            // autoCerrar();
         };
     </script>
 </body>
